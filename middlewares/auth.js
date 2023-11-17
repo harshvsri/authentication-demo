@@ -68,4 +68,14 @@ function isUserAuthenticated(req, res, next) {
   res.redirect("/login");
 }
 
-module.exports = { initializePassport, isUserAuthenticated };
+function isUserNotAuthenticated(req, res, next) {
+  if (!req.isAuthenticated()) return next();
+  // User is authenticated, redirect to homepage.
+  res.redirect("/");
+}
+
+module.exports = {
+  initializePassport,
+  isUserAuthenticated,
+  isUserNotAuthenticated,
+};

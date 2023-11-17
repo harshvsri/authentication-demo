@@ -5,6 +5,7 @@ const passport = require("passport");
 const {
   initializePassport,
   isUserAuthenticated,
+  isUserNotAuthenticated,
 } = require("../middlewares/auth");
 
 const users = [];
@@ -21,15 +22,15 @@ router.get("/", isUserAuthenticated, function (req, res, next) {
   res.render("index", { user: req.user });
 });
 
-router.get("/register", (req, res) => {
+router.get("/register", isUserNotAuthenticated, (req, res) => {
   res.render("register");
 });
 
-router.get("/login", (req, res) => {
+router.get("/login", isUserNotAuthenticated, (req, res) => {
   res.render("login");
 });
 
-router.post("/register", async (req, res) => {
+router.post("/register", isUserNotAuthenticated, async (req, res) => {
   const { fullName, email, username, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -48,6 +49,7 @@ router.post("/register", async (req, res) => {
 
 router.post(
   "/login",
+  isUserNotAuthenticated,
   // Use Passport's local strategy for authentication and flash messages for errors.
   passport.authenticate("local", {
     successRedirect: "/",
