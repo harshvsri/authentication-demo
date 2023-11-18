@@ -10,6 +10,17 @@ const {
 
 const users = [];
 
+(async function createTestUser() {
+  const hashedPassword = await bcrypt.hash("test", 10);
+  users.push({
+    id: Date.now().toString(),
+    fullName: "Test User",
+    email: "test@gmail.com",
+    username: "test",
+    password: hashedPassword,
+  });
+})();
+
 /* Initializes Passport with a local strategy, 
 using provided functions to find users by username and id. */
 initializePassport(
@@ -57,5 +68,14 @@ router.post(
     failureFlash: true,
   })
 );
+
+router.post("/logout", (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/login");
+  });
+});
 
 module.exports = router;

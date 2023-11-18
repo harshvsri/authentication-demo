@@ -14,7 +14,13 @@
   <body>
     <div class="wrapper">
       <h1>Welcome</h1>
-      <h1>Hello, <%= user.fullName %></h1>
+      <h1><%= user.fullName %></h1>
+
+      <form action="/logout" method="post">
+        <div class="input-box">
+          <button type="submit">Logout</button>
+        </div>
+      </form>
     </div>
   </body>
 </html>
