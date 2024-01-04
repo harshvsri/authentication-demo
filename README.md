@@ -1,4 +1,4 @@
-# Node.js Authentication Demo
+# Authentication Demo
 
 ## Overview
 
