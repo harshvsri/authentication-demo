@@ -10,7 +10,7 @@ const {
 
 const users = [];
 
-(async function createTestUser() {
+async function createTestUser() {
   const hashedPassword = await bcrypt.hash("test", 10);
   users.push({
     id: Date.now().toString(),
@@ -19,14 +19,15 @@ const users = [];
     username: "test",
     password: hashedPassword,
   });
-})();
+}
+createTestUser();
 
 /* Initializes Passport with a local strategy, 
 using provided functions to find users by username and id. */
 initializePassport(
   passport,
-  (username) => users.find((user) => user.username === username),
-  (id) => users.find((user) => user.id === id)
+  (_username) => users.find((user) => user.username === _username),
+  (_id) => users.find((user) => user.id === _id)
 );
 
 router.get("/", isUserAuthenticated, function (req, res, next) {

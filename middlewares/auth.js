@@ -22,6 +22,7 @@ function initializePassport(passport, getUserByUsername, getUserByID) {
       return done(error);
     }
   };
+
   // Use the local strategy with Passport.
   passport.use(
     new LocalStrategy(
@@ -32,8 +33,8 @@ function initializePassport(passport, getUserByUsername, getUserByID) {
     )
   );
 
-  /* This method is used to decide which data of the user object should be stored in the session. The result of the serializeUser method is attached to the session as 
-    req.session.passport.user = {} 
+  /* serializeUser is used to decide which data of the user object should be stored in the session. 
+  The result of the serializeUser method is attached to the session as req.session.passport.user = {} 
   Here, the user's id is stored in the session. 
   This helps in managing the amount of data that gets stored in the session. */
   passport.serializeUser((user, done) => {

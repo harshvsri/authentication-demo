@@ -13,12 +13,14 @@ This project is a simple yet effective demonstration of user authentication usin
 ## Setup Instructions
 
 1. **Clone the Repository:**
+
    ```bash
    git clone https://github.com/your-username/node-authentication-demo.git
    cd authentication
    ```
 
 2. **Install Dependencies and run**
+
    ```bash
    npm install
    npm start
@@ -26,9 +28,10 @@ This project is a simple yet effective demonstration of user authentication usin
 
 3. **Access the Application:**
 
-- The application will be accessible at http://localhost:3000.
+- The application will be accessible at <http://localhost:3000>.
 
 ## Requirements
+
 - Node.js (v14 or higher)
 - npm (Node Package Manager)
 
