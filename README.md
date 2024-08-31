@@ -30,11 +30,11 @@ This project is a simple yet effective demonstration of user authentication usin
 
 - The application will be accessible at <http://localhost:3000>.
 
-  ### **Test User** (You can use the following credentials to log in and test the application)
+### **Test User** (You can use the following credentials to log in and test the application)
 
-  - **Username:** test
-  - **Password:** test
-  
+- **Username:** test
+- **Password:** test
+
 ## Requirements
 
 - Node.js (v14 or higher)
